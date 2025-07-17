@@ -6,6 +6,8 @@ android {
     compileSdk rootProject.ext.compileSdk
     compileSdkVersion rootProject.ext.compileSdk
 
+    namespace 'com.google.ar.sceneform.samples.depth'
+
     defaultConfig {
         applicationId 'com.google.ar.sceneform.samples.depth'
 
@@ -16,8 +18,8 @@ android {
         versionName "1.0"
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
     androidResources {
         noCompress 'filamat', 'ktx'

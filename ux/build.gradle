@@ -11,6 +11,8 @@ android {
     compileSdk rootProject.ext.compileSdk
     compileSdkVersion rootProject.ext.compileSdk
 
+    namespace 'com.google.ar.sceneform.ux'
+
     defaultConfig {
         // Sceneform requires minSdk >= 24.
         minSdk rootProject.ext.minSdk
@@ -19,11 +21,11 @@ android {
     compileOptions {
         // Sceneform libraries use language constructs from Java 8.
         // Add these compile options if targeting minSdk < 26.
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_1_8.toString()
+        jvmTarget = JavaVersion.VERSION_17.toString()
     }
     buildTypes {
         release {
