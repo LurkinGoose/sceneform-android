@@ -3,9 +3,9 @@ versionMajor = "2"
 versionMinor = "51"
 versionPatch = "0"
 
-compileSdkVersion = "35"
+compileSdkVersion = "36"
 minimumSdkVersion = "28"
-targetSdkVersion = "35"
+targetSdkVersion = "36"
 
 kotlin_version = "1.9.20"
 kotlinx_coroutines_version = "1.5.2"
