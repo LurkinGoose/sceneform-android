@@ -1,7 +1,7 @@
 plugins {
     id("com.android.library")
     kotlin("android")
-    id("com.vanniktech.maven.publish")
+    //id("com.vanniktech.maven.publish")
 }
 
 val groupName = project.property("GROUP") as String?
@@ -93,7 +93,9 @@ dependencies {
     implementation(libs.fuel.coroutines)
 }
 
+/*
 mavenPublish {
     releaseSigningEnabled =
         project.hasProperty("signing.keyId") && project.hasProperty("signing.password")
 }
+*/
