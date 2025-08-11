@@ -46,9 +46,9 @@ public class ExternalTexture {
         surface = new Surface(surfaceTexture);
 
         // Create the filament stream.
-        Stream stream =
-                new Stream.Builder()
-                        .stream(surfaceTexture).build(EngineInstance.getEngine().getFilamentEngine());
+        Stream stream = new Stream.Builder()
+                .stream(surfaceTexture)
+                .build(EngineInstance.getEngine().getFilamentEngine());
 
         initialize(stream);
     }
@@ -58,7 +58,7 @@ public class ExternalTexture {
      * use only.
      */
     public ExternalTexture(int textureId, int width, int height) {
-       /* this.surface = null;
+       /*this.surface = null;
 
         this.filamentTexture = new Texture
                 .Builder()
@@ -86,16 +86,16 @@ public class ExternalTexture {
                 .register(this, new CleanupCallback(filamentTexture, filamentStream));*/
 
         // Explicitly set the surface and surfaceTexture to null, since they are unused in this case.
-        surfaceTexture = null;
-        surface = null;
+        surfaceTexture = new SurfaceTexture(textureId);
+        surfaceTexture.detachFromGLContext();
+        surface = new Surface(surfaceTexture);
 
         // Create the filament stream.
-        Stream stream =
-                new Stream.Builder()
-                        .stream(textureId)
-                        .width(width)
-                        .height(height)
-                        .build(EngineInstance.getEngine().getFilamentEngine());
+        Stream stream = new Stream.Builder()
+                .stream(surfaceTexture)
+                //.width(width)
+                //.height(height)
+                .build(EngineInstance.getEngine().getFilamentEngine());
 
         initialize(stream);
     }
@@ -112,15 +112,15 @@ public class ExternalTexture {
         this.filamentStream = filamentStream;
 
         // Create the filament texture.
-        filamentTexture =
-                new com.google.android.filament.Texture.Builder()
-                        .sampler(Texture.Sampler.SAMPLER_EXTERNAL)
-                        .format(Texture.InternalFormat.RGB8)
-                        .build(engine.getFilamentEngine());
+        filamentTexture = new com.google.android.filament.Texture.Builder()
+                .sampler(Texture.Sampler.SAMPLER_EXTERNAL)
+                .format(Texture.InternalFormat.RGB8)
+                .build(engine.getFilamentEngine());
 
         filamentTexture.setExternalStream(
                 engine.getFilamentEngine(),
                 filamentStream);
+
         ResourceManager.getInstance()
                 .getExternalTextureCleanupRegistry()
                 .register(this, new CleanupCallback(filamentTexture, filamentStream));
