@@ -16,6 +16,7 @@ android {
 
     buildFeatures {
         dataBinding = true // In Kotlin DSL, direct assignment
+        viewBinding = true
     }
 
     defaultConfig {
@@ -64,5 +65,8 @@ dependencies {
     // Or direct: releaseImplementation("com.gorisse.thomas.sceneform:sceneform:1.23.0")
 
     debugApi(project(":sceneform"))
+
+    // Ensures Kapt uses the correct Kotlin version for annotation processing
+    kapt(libs.kotlin.compiler.embeddable)
 }
 
