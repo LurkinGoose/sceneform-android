@@ -28,6 +28,6 @@ allprojects {
     }
 }
 
-task printProjectProperties {
+tasks.register('printProjectProperties') {
     project.properties.each { println "   $it" }
 }
